@@ -1,0 +1,124 @@
+#Plebator
+#1 or 2 Player Rock Paper Scissors
+
+from random import * #Allow random numbers to be generated
+
+def main():
+
+	#Available choices
+	options = ["Rock", "Paper", "Scissors"]
+
+	#Intro/Valid inputs
+	print("Welcome to Rock Paper Scissors!") 
+	print("R, r, Rock, or rock are rock.")
+	print("P, p, Paper or paper are paper.")
+	print("S, s, Scissors or scissors are scissors.")
+
+	#2 players or AI
+	againstBot = str(input("Do you want to play against the bot? (y/n)"))
+
+	#If playing against AI
+	if (againstBot == "y"):
+		#Gather player choices
+		playerOneChoice = str(input("Rock, Paper, or Scissors?"))
+
+		#Get bot random value
+		botValue = randint(0, 2)
+
+		#Assign Bot choice based on value
+		botValue = options[botValue]
+
+		#Take input and assign it to the list value for future comparison
+		if (playerOneChoice == "R" or playerOneChoice == "r" or playerOneChoice == "Rock" or playerOneChoice == "rock"): #Assign input to list value Rock
+			playerOneChoice = options[0]
+		elif (playerOneChoice == "P" or playerOneChoice == "p" or playerOneChoice == "Paper" or playerOneChoice == "paper"): #Assign input to list value Paper
+			playerOneChoice = options[1]
+		elif (playerOneChoice == "S" or playerOneChoice == "s" or playerOneChoice == "Scissors" or playerOneChoice == "scissors"): #Assign input to list value Scissors
+			playerOneChoice = options[2]
+
+		#Tell player what has been chosen
+		print
+		print("Playing against bot? " + againstBot)
+		print("You chose " + playerOneChoice)
+		print("The bot chose " + botValue)
+		print
+
+		#Test for winner
+		if (playerOneChoice == botValue): #Test if both have the same item
+			print("Draw")
+
+		elif (playerOneChoice == options[0]): #Test if player has rock
+			if (botValue == options[1]): 		#Test if player has rock AND bot has paper
+				print("The bot wins, " + botValue + " beats " + playerOneChoice)	#Announce bot wins
+			else:
+				print("You win, " + playerOneChoice + " beats " + botValue)	#Announce player wins
+
+		elif (playerOneChoice == options[1]): #Test if player has paper
+			if (botValue == options[2]):
+				print("The bot wins, " + botValue + " beats " + playerOneChoice)	#Announce bot wins
+			else:
+				print("You win, " + playerOneChoice + " beats " + botValue)	#Announce player wins
+
+		elif (playerOneChoice == options[2]): #Test if player has scissors
+			if(botValue == options[0]):
+				print("The bot wins, " + botValue + " beats " + playerOneChoice)	#Announce bot wins
+			else: 
+				print("You win, " + playerOneChoice + " beats " + botValue)	#Announce player wins
+
+	#If against another person
+	elif (againstBot == "n"): 
+		#Gather player choices
+		playerOneChoice = str(input("Player 1: Rock, Paper, or Scissors?"))
+		playerTwoChoice = str(input("Player 2: Rock, Paper, or Scissors?"))
+
+		#Take Player 1 input and assign it to the list value for future comparison
+		if (playerOneChoice == "R" or playerOneChoice == "r" or playerOneChoice == "Rock" or playerOneChoice == "rock"): #Assign input to list value Rock
+			playerOneChoice = options[0]
+		elif (playerOneChoice == "P" or playerOneChoice == "p" or playerOneChoice == "Paper" or playerOneChoice == "paper"): #Assign input to list value Paper
+			playerOneChoice = options[1]
+		elif (playerOneChoice == "S" or playerOneChoice == "s" or playerOneChoice == "Scissors" or playerOneChoice == "scissors"): #Assign input to list value Scissors
+			playerOneChoice = options[2]
+
+		#Take Player 2 input and assign it to the list value for future comparison
+		if (playerTwoChoice == "R" or playerTwoChoice == "r" or playerTwoChoice == "Rock" or playerTwoChoice == "rock"): #Assign input to list value Rock
+			playerTwoChoice = options[0]
+		elif (playerTwoChoice == "P" or playerTwoChoice == "p" or playerTwoChoice == "Paper" or playerTwoChoice == "paper"): #Assign input to list value Paper
+			playerTwoChoice = options[1]
+		elif (playerTwoChoice == "S" or playerTwoChoice == "s" or playerTwoChoice == "Scissors" or playerTwoChoice == "scissors"): #Assign input to list value Scissors
+			playerTwoChoice = options[2]
+
+		#Tell player what has been chosen
+		print
+		print("Playing against bot? " + againstBot)
+		print("Player 1 chose " + playerOneChoice)
+		print("Player 2 chose " + playerTwoChoice)
+		print
+
+		#Test for winner
+		if (playerOneChoice == playerTwoChoice): #Test if both have the same item
+			print("Draw")
+
+		elif (playerOneChoice == options[0]): #Test if player has rock
+			if (playerTwoChoice == options[1]): 		#Test if player has rock AND bot has paper
+				print("Player 2 wins, " + playerTwoChoice + " beats " + playerOneChoice)	#Announce Player 2 wins
+			else:
+				print("Player 1 wins, " + playerOneChoice + " beats " + playerTwoChoice)	#Announce Player 1 wins
+
+		elif (playerOneChoice == options[1]): #Test if player has paper
+			if (playerTwoChoice == options[2]):
+				print("Player 2 wins, " + playerTwoChoice + " beats " + playerOneChoice)	#Announce Player 2 wins
+			else:
+				print("Player 1 wins, " + playerOneChoice + " beats " + playerTwoChoice)	#Announce Player 1 wins
+
+		elif (playerOneChoice == options[2]): #Test if player has scissors
+			if(playerTwoChoice == options[0]):
+				print("Player 2 wins, " + playerTwoChoice + " beats " + playerOneChoice)	#Announce Player 2 wins
+			else:
+				print("Player 1 wins, " + playerOneChoice + " beats " + playerTwoChoice)	#Announce Player 1 wins
+
+
+	#Else
+	else:
+		print("Invalid input, try again")
+
+main()
